@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="page-header">
+  <h1>My Devices</h1>
+</div>
+
+  <div class="row">
+    <div class="col-md-12">
+        <a href="{% url 'devices:create' %}" class="btn btn-primary">Add device</a>
+    </div>
+  </div>
+
+    <div class="row top-gutter">
+        <div class="col-md-12">
+            <ul class="list-group">
+            {% for device in object_list %}
+                <li class="list-group-item">
+                    <a href="{% url 'devices:detail' device.pk %}">{{device.title}}</a>
+                        <div class="btn-group pull-right">
+                            <a href="{% url 'devices:update' device.pk %}" class="btn btn-default btn-xs"><span class="glyphicon glyphicon-pencil"></span></a>
+                            <a href="{% url 'devices:delete' device.pk %}" class="btn btn-default btn-xs btn-danger"><span class="glyphicon glyphicon-trash"></span></a>
+                        </div>
+                </li>
+            {% endfor %}
+            </ul>
+        </div>
+    </div>
+{% endblock content %}

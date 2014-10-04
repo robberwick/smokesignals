@@ -42,12 +42,13 @@ class Common(Configuration):
         'allauth',  # registration
         'allauth.account',  # registration
         'allauth.socialaccount',  # registration
+        'django_extensions',    # Field extensions and more
     )
 
     # Apps specific for this project go here.
     LOCAL_APPS = (
         'users',  # custom users app
-        # Your stuff: custom apps go here
+        'devices',  # Devices app
     )
 
     # See: https://docs.djangoproject.com/en/dev/ref/settings/#installed-apps
@@ -72,7 +73,6 @@ class Common(Configuration):
         'sites': 'contrib.sites.migrations'
     }
     # END MIGRATIONS CONFIGURATION
-
 
     # DEBUG
     # See: https://docs.djangoproject.com/en/dev/ref/settings/#debug
@@ -112,7 +112,7 @@ class Common(Configuration):
 
     # DATABASE CONFIGURATION
     # See: https://docs.djangoproject.com/en/dev/ref/settings/#databases
-    DATABASES = values.DatabaseURLValue('postgres://localhost/smokesignals')
+    DATABASES = values.DatabaseURLValue('postgres://smokesignals:smokesignals@localhost/smokesignals')
     # END DATABASE CONFIGURATION
 
     # CACHING

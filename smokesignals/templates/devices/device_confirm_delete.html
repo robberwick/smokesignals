@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+
+<h1>Confirm delete?</h1>
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12">
+            <form class="form-horizontal" method="post" action="{% url 'devices:delete' object.pk %}">
+                {% csrf_token %}
+                <dl>
+                    <dt>Name</dt>
+                    <dd>{{object.title}}</dd>
+                    <dt>UUID:</dt>
+                    <dd>{{object.uuid}}</dd>
+                </dl>
+                <div class="control-group">
+                  <div class="controls">
+                    <button type="submit" class="btn">Delete</button>
+                  </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}
